@@ -3,11 +3,13 @@ package Daos;
 import Entities.Pieces.*;
 import Entities.Position;
 
+import java.util.List;
 import java.util.Map;
 
 public class dao {
     Map<Integer, Position> board;
     private int whoseTurn;
+    private int currentPos;
 
 
     public void init(){
@@ -66,7 +68,7 @@ public class dao {
         pos.setCurrentPiece(new king(1));
         board.put(60,pos);
     }
-    
+
     private boolean checkPosition(int pos){
         Position check = board.get(pos);
         if(check.getCurrentPiece() == null){
@@ -76,5 +78,19 @@ public class dao {
             return true;
         }
         return false;
+    }
+
+    public List<Integer> pieceClickedOn(int pos){
+        currentPos = pos;
+        return board.get(pos).getCurrentPiece().possibleMoves(pos,board);
+    }
+
+    public void movePiece(int pos){
+        Position tmpPiece = board.get(currentPos);
+        board.put(currentPos, new Position());
+        if(checkPosition(pos)){
+            //remove piece
+        }
+        board.put(pos, tmpPiece);
     }
 }

@@ -46,4 +46,9 @@ public class king extends piece{
         }
         return moves;
     }
+
+    public double getType(){
+        return 20;
+    }
+
 }

@@ -30,4 +30,8 @@ public class piece {
         }
         else return 2;
     }
+
+    public double getType(){
+        return 0;
+    }
 }

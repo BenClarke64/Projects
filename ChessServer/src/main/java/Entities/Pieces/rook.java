@@ -84,4 +84,8 @@ public class rook extends piece{
         }
         return moves;
     }
+
+    public double getType(){
+        return 5.1;
+    }
 }

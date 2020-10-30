@@ -60,4 +60,8 @@ public class pawn extends piece{
         }
         return moves;
     }
+
+    public double getType(){
+        return 1;
+    }
 }

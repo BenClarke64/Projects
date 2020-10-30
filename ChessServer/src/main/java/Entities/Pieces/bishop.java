@@ -86,8 +86,10 @@ public class bishop extends piece{
                 while (tempPos > 7);
             }
         }
-
-
         return moves;
+    }
+
+    public double getType(){
+        return 3.33;
     }
 }

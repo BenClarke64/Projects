@@ -66,4 +66,8 @@ public class knight extends piece{
         return moves;
     }
 
+    public double getType(){
+        return 3.2;
+    }
+
 }

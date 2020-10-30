@@ -153,4 +153,8 @@ public class queen extends piece{
         }
         return moves;
     }
+
+    public double getType(){
+        return 8.8;
+    }
 }
