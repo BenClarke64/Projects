@@ -2,14 +2,17 @@ package Daos;
 
 import Entities.Pieces.*;
 import Entities.Position;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public class dao {
     Map<Integer, Position> board;
     private int whoseTurn;
     private int currentPos;
+    private List<piece> whiteLostPieces, blackLostPieces;
 
 
     public void init(){
@@ -87,10 +90,22 @@ public class dao {
 
     public void movePiece(int pos){
         Position tmpPiece = board.get(currentPos);
-        board.put(currentPos, new Position());
         if(checkPosition(pos)){
-            //remove piece
+            if(whoseTurn == 0){
+                blackLostPieces.add(tmpPiece.getCurrentPiece());
+            }
+            else whiteLostPieces.add(tmpPiece.getCurrentPiece());
         }
+        board.put(currentPos, new Position());
         board.put(pos, tmpPiece);
+    }
+
+    public List<piece> getTakenPieces(int who){
+        if(who == 0){
+            return whiteLostPieces;
+        }
+        else{
+            return blackLostPieces;
+        }
     }
 }
