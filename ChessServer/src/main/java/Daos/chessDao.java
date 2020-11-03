@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class dao {
+public class chessDao {
     Map<Integer, Position> board;
     private int whoseTurn;
     private int currentPos;
@@ -91,7 +91,7 @@ public class dao {
     public void movePiece(int pos){
         Position tmpPiece = board.get(currentPos);
         if(checkPosition(pos)){
-            if(whoseTurn == 0){
+            if(whoseTurn == 0){//add the taken piece to the oppositions taken piece pile
                 blackLostPieces.add(tmpPiece.getCurrentPiece());
             }
             else whiteLostPieces.add(tmpPiece.getCurrentPiece());
@@ -107,5 +107,16 @@ public class dao {
         else{
             return blackLostPieces;
         }
+    }
+
+    public Map<Integer,Position> getBoard(){
+        return board;
+    }
+
+    public void changeTurn(){
+        if(whoseTurn == 0){
+            whoseTurn = 1;
+        }
+        else whoseTurn = 0;
     }
 }
